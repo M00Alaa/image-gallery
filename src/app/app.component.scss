@@ -5,3 +5,99 @@
     flex-wrap: wrap;
     gap: 15px;
 }
+
+.lightBox{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba($color: #000000, $alpha: 0.85);
+
+    .count{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 7%;
+        height: 10%;
+        color: #fff;
+        opacity: 0.7;
+        font-size: 18px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: 5px;
+    }
+    .close-btn{
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 0;
+        color: #fff;
+        background: 0 0;
+        border: 0;
+        cursor: pointer;
+        width: 7%;
+        height: 10%;
+        z-index: 2;
+
+        .fa-times{
+            font-size: 25px;
+        }
+    }
+    .btn-lightBox-carousel{
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1;
+        width: 8%;
+        height: 8%;
+        padding: 0;
+        color: #fff;
+        text-align: center;
+        background: 0 0;
+        border: 0;
+        cursor: pointer;
+    }
+    .btn-prev{
+        left: 0;
+    }
+    .btn-next{
+        right: 0;
+    }
+    .btn-lightBox-carousel{
+        color: #fff;
+        opacity: 0.5;
+        transition: all 0.15s ease;
+        -webkit-transition: all 0.15s ease;
+        -moz-transition: all 0.15s ease;
+        -ms-transition: all 0.15s ease;
+        -o-transition: all 0.15s ease;
+}
+
+    .btn-lightBox-carousel:hover {
+        opacity: 0.9;
+    }
+
+    .btn-lightBox-carousel:active {
+        opacity: 0.5;
+    }
+
+    .icon-prev,
+    .icon-next{
+        font-size: 30px;
+    }
+
+    .lightBox-img img{
+        width: 100%;
+        border-radius: 0.35rem;
+        -webkit-border-radius: 0.35rem;
+        -moz-border-radius: 0.35rem;
+        -ms-border-radius: 0.35rem;
+        -o-border-radius: 0.35rem;
+}
+}

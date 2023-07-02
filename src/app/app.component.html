@@ -9,13 +9,15 @@
 
     <!-- Images Cards -->
     <div class="d-flex col-md-12 flex-wrap gap-5 mt-5">
-      <div class="card col-md-3 flex-grow-1" *ngFor="let item of filteredCategories">
-        <img src="{{item.img}}" class="card-img-top" alt="...">
+
+      <input [(ngModel)]="term" type="text" class="form-control" placeholder="search by tag ...">
+
+      <div class="card col-md-3 flex-grow-1" *ngFor="let item of filteredCategories|search:term">
+        <img (click)="onPreviewImage(item.id)" src="{{item.img}}" class="card-img-top" alt="...">
         <div class="card-body">
           <div class="d-flex w-75 gap-3">
             <h5 class="card-title" *ngFor="let tag of item.tags">{{tag}},</h5>
           </div>
-
           <p class="card-text">{{item.disc}}</p>
         </div>
         <ul class="list-group list-group-flush">
@@ -24,6 +26,22 @@
         </ul>
       </div>
 
+      <div *ngIf="showMask" class="lightBox">
+        <span *ngIf="showCount" class="count">{{currentIndex + 1}}/ {{totalImageCount}}</span>
+        <button (click)="onClosePreview()" *ngIf="previewImage" class="close-btn">
+          <i class="fas fa-times"></i>
+        </button>
+        <button (click)="prev()" *ngIf="controls" class="btn-lightBox-carousel btn-prev">
+          <i class="fas fa-arrow-circle-left icon-lightbox-carousel icon-prev"></i>
+        </button>
+        <button (click)="next()" *ngIf="controls" class="btn-lightBox-carousel btn-next">
+          <i class="fas fa-arrow-circle-right icon-lightbox-carousel icon-next"></i>
+        </button>
+
+        <div *ngIf="previewImage" class="lightBox-img">
+          <img src="{{currentLightBoxImage.img}}" alt="">
+        </div>
+      </div>
     </div>
   </div>
 </div>

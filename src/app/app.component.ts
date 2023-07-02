@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -7,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit {
   title = 'image-gallery';
+  @Input() showCount = false
+
+  term: string = ''
 
   categories = [
     {
@@ -141,6 +144,12 @@ export class AppComponent implements OnInit {
   filteredCategories = this.categoriesData
 
 
+  previewImage: boolean = false;
+  showMask: boolean = false;
+  currentLightBoxImage = this.categoriesData[0]
+  currentIndex = 0
+  controls = true
+  totalImageCount = 0
 
   constructor() { }
 
@@ -160,7 +169,40 @@ export class AppComponent implements OnInit {
     console.log(this.filteredCategories);
   }
 
+  onPreviewImage(id: any): void {
+    this.showMask = true
+    this.previewImage = true
+    this.currentIndex = id
+    this.currentLightBoxImage = this.categoriesData[id - 1]
+  }
+
+  onClosePreview() {
+    this.previewImage = false
+    this.showMask = false
+  }
+
+  next(): void {
+    this.currentIndex = this.currentIndex + 1
+    if (this.currentIndex > this.filteredCategories.length - 1) {
+      this.currentIndex = 0
+    }
+    this.currentLightBoxImage = this.filteredCategories[this.currentIndex]
+    console.log(this.currentLightBoxImage);
+  }
+
+  prev(): void {
+    if (this.currentIndex < 0) {
+      this.currentIndex = this.filteredCategories.length - 1
+    } else {
+      this.currentIndex = this.currentIndex - 1
+    }
+    this.currentLightBoxImage = this.filteredCategories[this.currentIndex]
+    console.log(this.currentLightBoxImage);
+
+  }
+
   ngOnInit(): void {
+    this.totalImageCount = this.filteredCategories.length
   }
 
 }
