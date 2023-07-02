@@ -148,12 +148,16 @@ export class AppComponent implements OnInit {
 
     console.log(name);
 
-    this.filteredCategories = this.categoriesData.filter(p => p.category.includes(name))
+    if (name == null) {
+      this.filteredCategories = this.categoriesData
+    }
+    else {
+      this.filteredCategories = this.categoriesData.filter(p => p.category.includes(name))
+    }
+
+
 
     console.log(this.filteredCategories);
-
-
-
   }
 
   ngOnInit(): void {

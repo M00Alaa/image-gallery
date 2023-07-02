@@ -1,22 +1,29 @@
-<div class="container">
-  <!-- filter buttons -->
-  <div class="filter-buttons">
-    <button (click)="filterCards(null)" class="active" data-name="all">Show all</button>
-    <button (click)="filterCards(category.name)" *ngFor="let category of categories">{{category.name}}</button>
-  </div>
-
-  <!-- Images Cards -->
-  <div class="filterable-cards">
-
-    <div class="card" *ngFor="let item of filteredCategories">
-      <img src="{{item.img}}" alt="">
-      <div class="card-body">
-        <h6 class="card-title" *ngFor="let tag of item.tags">{{tag}}</h6>
-        <p class="card-text">{{item.disc}}</p>
-        <p class="card-text">Author: {{item.author}}</p>
-        <p class="card-text">Date: {{item.date}}</p>
-      </div>
+<div class="container py-5">
+  <div class="row">
+    <!-- filter buttons -->
+    <div class="filter-buttons">
+      <button class="btn btn-outline-dark active" (click)="filterCards(null)" data-name="all">Show all</button>
+      <button class="btn btn-outline-dark" (click)="filterCards(category.name)"
+        *ngFor="let category of categories">{{category.name}}</button>
     </div>
 
+    <!-- Images Cards -->
+    <div class="d-flex col-md-12 flex-wrap gap-5 mt-5">
+      <div class="card col-md-3 flex-grow-1" *ngFor="let item of filteredCategories">
+        <img src="{{item.img}}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <div class="d-flex w-75 gap-3">
+            <h5 class="card-title" *ngFor="let tag of item.tags">{{tag}},</h5>
+          </div>
+
+          <p class="card-text">{{item.disc}}</p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Author : {{ item.author}}</li>
+          <li class="list-group-item">Date : {{item.date}}</li>
+        </ul>
+      </div>
+
+    </div>
   </div>
 </div>
