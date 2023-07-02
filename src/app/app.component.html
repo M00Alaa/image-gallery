@@ -27,7 +27,6 @@
       </div>
 
       <div *ngIf="showMask" class="lightBox">
-        <span *ngIf="showCount" class="count">{{currentIndex + 1}}/ {{totalImageCount}}</span>
         <button (click)="onClosePreview()" *ngIf="previewImage" class="close-btn">
           <i class="fas fa-times"></i>
         </button>

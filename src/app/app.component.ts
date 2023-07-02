@@ -149,7 +149,6 @@ export class AppComponent implements OnInit {
   currentLightBoxImage = this.categoriesData[0]
   currentIndex = 0
   controls = true
-  totalImageCount = 0
 
   constructor() { }
 
@@ -202,7 +201,6 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.totalImageCount = this.filteredCategories.length
   }
 
 }
