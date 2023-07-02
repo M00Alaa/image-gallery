@@ -12,7 +12,7 @@
 
       <input [(ngModel)]="term" type="text" class="form-control" placeholder="search by tag ...">
 
-      <div class="card col-md-3 flex-grow-1" *ngFor="let item of filteredCategories|search:term">
+      <div class="card col-md-3 flex-grow-1" *ngFor="let item of filteredCategories|search:term.toLowerCase()">
         <img (click)="onPreviewImage(item.id)" src="{{item.img}}" class="card-img-top" alt="...">
         <div class="card-body">
           <div class="d-flex w-75 gap-3">
